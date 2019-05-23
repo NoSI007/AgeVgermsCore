@@ -1,0 +1,478 @@
+﻿<Window 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:local="clr-namespace:gVl"
+        xmlns:ctl="http://schemas.syncfusion.com/wpf"
+        xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
+        Background="Green"
+        x:Class="gVl.Home"
+        
+        Title="AvG Predictions" Height="350" Width="800">
+    <Window.Resources>
+
+        <!--<Style TargetType="{x:Type tk:LinearAxis}">
+            <Setter Property="Foreground" Value="LightCyan"/>
+            <Setter Property="Background" Value="Black"/>
+        </Style>-->
+        <!--<Style TargetType="{x:Type tk:Chart}">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Cyan"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>-->
+        <Style TargetType="{x:Type TextBlock}" x:Key="Ralign">
+            <Setter Property="TextAlignment" Value="Right"/>
+
+        </Style>
+        <!--<Style TargetType="{x:Type tk:LineSeries}">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Background" Value="Yellow"/>
+            <Setter Property="BorderBrush" Value="Cyan"/>
+        </Style>-->
+        
+        
+        <!--
+        
+        Office2010Blue, 
+        Office2010Black, 
+        Office2010Silver, 
+        Office2007Blue, 
+        Office2007Black, 
+        Office2007Silver, 
+        and Blend.
+        
+        -->
+        <Style x:Key="Silver">
+            <Setter Property="ctl:SkinManager.ActiveColorScheme" Value="lightcyan"/>
+        </Style>
+
+        <Style x:Key="Blue">
+            <Setter Property="ctl:SkinManager.ActiveColorScheme" Value="Blue"/>
+        </Style>
+        
+    </Window.Resources>
+    <Grid Style="{StaticResource gBg}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="True" >
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="24" VerticalAlignment="Top" HorizontalAlignment="Center" >
+                
+                <ctl:ButtonAdv x:Name="zSuffron" Label="Suffron" Click="zSuffron_Click"  IconWidth="0"/>
+                <ctl:ButtonAdv x:Name="zLime" Label="Lime"  IconWidth="0" Click="zLime_Click"/>
+                <!--<Button x:Name="zMetro" Content="Metro" Click="zMetro_Click"/>-->
+                <ctl:ButtonAdv x:Name="zOffice2016Colorful" IconWidth="0" Label="Office2016Colorful" Click="zOffice2016Colorful_Click"/>
+                <ctl:ButtonAdv x:Name="zBlend" Label="Blend" IconWidth="0" Click="zBlend_Click"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"  HorizontalAlignment="Center" Height="24" >
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zMetro" Label="Metro" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zAutumnBrights" Label="AutumnBrights" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zFloraHues" Label="FloraHues" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zPineapple" Label="Pineapple" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zTomotoSpectrum" Label="TomotoSpectrum" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zRedChrome" Label="RedChrome" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zPurpleChrome" Label="PurpleChrome" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zBlueChrome" Label="BlueChrome" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zGreenChrome" Label="GreenChrome" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zElite" Label="Elite" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zLightCandy" Label="LightCandy" Click="zPallet_Cliked"/>
+                <ctl:ButtonAdv   IconWidth="0"    x:Name="zSandyBeach" Label="SandyBeach" Click="zPallet_Cliked"/>
+            </StackPanel>
+        </DockPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="24">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Label}" >
+                    <Setter Property="Width" Value="72"/>
+                    <Setter Property="Height" Value="26"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="Width" Value="44"/>
+                    <Setter Property="Height" Value="26"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel.Effect>
+                <DropShadowEffect RenderingBias="Quality" Color="#FFA8FF00" ShadowDepth="1"/>
+            </StackPanel.Effect>
+            <Label Content="       From :" ToolTipService.ToolTip="Start age.(years)"/>
+            <ctl:DoubleTextBox x:Name="z_from" Text="36" />
+
+            <Label Content=" Increment :"  ToolTipService.ToolTip="Increment by (years)"/>
+            <ctl:DoubleTextBox x:Name="z_inc" Text="2" />
+            <Label Content="     To :" ToolTipService.ToolTip="Upper Limit(years)"/>
+            <ctl:DoubleTextBox x:Name="z_to" Text="72" />
+            <ctl:ButtonAdv  x:Name="zGo" Width="48"  Label="Ok" Click="ZGo_Click" Margin="22,0,0,0" IconHeight="0" IconWidth="0"  SizeMode="Normal"/>
+          
+        </StackPanel>
+
+
+        <Grid Grid.Row="2"   >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition MinWidth="220" Width="220"/>
+                <ColumnDefinition Width="400*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3"/>
+            </Grid.RowDefinitions> 
+
+
+
+            <ctl:SfDataGrid x:Name="pg" HorizontalAlignment="Stretch" Width="220" MinWidth="220"  ItemsSource="{Binding}" 
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            AutoGenerateColumns="False" ShowBusyIndicator="True"     >
+                <ctl:SfDataGrid.Effect>
+                    <DropShadowEffect Color="#FFC6F464" ShadowDepth="1" BlurRadius="1" RenderingBias="Quality"/>
+                </ctl:SfDataGrid.Effect>
+                <ctl:SfDataGrid.Columns>
+                    <ctl:GridNumericColumn HeaderText="Age "   Width="101"  DisplayBinding="{Binding Key,StringFormat=' \{0:F2\}'}" />
+                    <ctl:GridNumericColumn HeaderText="Germs "  Width="101" DisplayBinding="{Binding Value,StringFormat=' \{0:F2\}'}" />
+                </ctl:SfDataGrid.Columns>
+            </ctl:SfDataGrid>
+            <ctl:TabControlExt   Grid.Column="1" >
+
+                <ctl:TabItemExt Header="Bubble"  >
+                    <Border  Margin="3"     BorderThickness="1">
+                        <chart:SfChart Height="auto"  Width="auto" x:Name="zChart" Header="Germs V Longivity">
+                            <chart:SfChart.Behaviors>
+
+                                <chart:ChartCrossHairBehavior VerticalAxisLabelAlignment="Far " HorizontalAxisLabelAlignment="Center ">
+
+                                    <chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="10,5"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Red"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".2"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.VerticalLineStyle>
+
+                                    <chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="5,10"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Blue"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".4"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                </chart:ChartCrossHairBehavior>
+
+
+                            </chart:SfChart.Behaviors>
+                            <chart:SfChart.PrimaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Age(years)"  FontSize="14"/>
+                            </chart:SfChart.PrimaryAxis>
+
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Germs(trill)"  FontSize="14"/>
+                            </chart:SfChart.SecondaryAxis>
+
+                            <chart:BubbleSeries ShowTooltip="True" Size="Value"    MinimumRadius="0" MaximumRadius="50"   x:Name="avgChart0" Label="g = f(l)" ItemsSource="{Binding}" YBindingPath="Value" XBindingPath="Key" >
+                                <chart:BubbleSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo ShowMarker="True"  SymbolHeight="4" SymbolWidth="4"  Symbol="Ellipse"></chart:ChartAdornmentInfo>
+                                </chart:BubbleSeries.AdornmentsInfo>
+                            </chart:BubbleSeries>
+                        </chart:SfChart>
+
+                    </Border>
+                    </ctl:TabItemExt>
+                <ctl:TabItemExt Header="Line" >
+                    <Border  Margin="3"    BorderThickness="1">
+                        <chart:SfChart Height="auto" Width="auto" x:Name="zChart1" Header="Germs V Longivity">
+                            <chart:SfChart.PrimaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Age(years)" FontSize="14"/>
+                            </chart:SfChart.PrimaryAxis>
+                            <chart:SfChart.Behaviors>
+
+                                <chart:ChartCrossHairBehavior VerticalAxisLabelAlignment="Far " HorizontalAxisLabelAlignment="Center ">
+
+                                    <chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                        <Style TargetType="Line">
+                                            <!--<Setter Property="StrokeDashArray" Value="10,5"></Setter>-->
+                                            <Setter Property="Stroke" Value="Red"></Setter>
+                                            <Setter Property="StrokeThickness" Value=".2"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.VerticalLineStyle>
+
+                                    <chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                        <Style TargetType="Line">
+                                            <!--<Setter Property="StrokeDashArray" Value="5,10"></Setter>-->
+                                            <Setter Property="Stroke" Value="Blue"></Setter>
+                                            <Setter Property="StrokeThickness" Value=".4"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                </chart:ChartCrossHairBehavior>
+
+
+                            </chart:SfChart.Behaviors>
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Germs(trill)" FontSize="14"/>
+                            </chart:SfChart.SecondaryAxis>
+
+                            <chart:LineSeries   x:Name="avgChart1" Label="g = f(l)" ItemsSource="{Binding}" YBindingPath="Value" XBindingPath="Key" >
+                                <chart:LineSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo ShowMarker="True" SymbolStroke="LightBlue" SymbolInterior="Blue" Symbol="InvertedTriangle" SymbolHeight="8" SymbolWidth="8"></chart:ChartAdornmentInfo>
+                                </chart:LineSeries.AdornmentsInfo>
+                            </chart:LineSeries>
+                        </chart:SfChart>
+
+                    </Border>
+                </ctl:TabItemExt>
+
+                <ctl:TabItemExt Header="Area" >
+                    <Border  Margin="3"      BorderThickness="1">
+                        <chart:SfChart Height="auto" Width="auto" x:Name="zChart2" Header="Germs V Longivity">
+                            <chart:SfChart.Behaviors>
+                  
+                                <chart:ChartCrossHairBehavior VerticalAxisLabelAlignment="Far " HorizontalAxisLabelAlignment="Center ">
+                                    
+                                    <chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="10,5"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Red"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".2"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                    
+                                    <chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="5,10"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Blue"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".4"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                </chart:ChartCrossHairBehavior>
+
+                                
+                            </chart:SfChart.Behaviors>
+                            <chart:SfChart.PrimaryAxis>
+                                <chart:NumericalAxis Header="Age(years)"  ShowTrackBallInfo="True" FontSize="14"/>
+                            </chart:SfChart.PrimaryAxis>
+
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis Header="Germs(trill)"  ShowTrackBallInfo="True" FontSize="14"/>
+                            </chart:SfChart.SecondaryAxis>
+                            <chart:AreaSeries  x:Name="avgChart2" Label="g = f(l)" ItemsSource="{Binding}" YBindingPath="Value" XBindingPath="Key" >
+                                <chart:AreaSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo ShowMarker="True"  Symbol="Ellipse"  SymbolHeight="7" SymbolWidth="7"></chart:ChartAdornmentInfo>
+                                </chart:AreaSeries.AdornmentsInfo>
+                            </chart:AreaSeries>
+                        </chart:SfChart>
+
+                    </Border>
+                </ctl:TabItemExt>
+                
+                <ctl:TabItemExt Header="Column">
+                        <Border  Margin="3"      BorderThickness="1">
+                            <chart:SfChart Height="auto" Width="auto" x:Name="zChart3" Header="Germs V Longivity">
+                                <chart:SfChart.PrimaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Age(years)" FontSize="14"/>
+                                </chart:SfChart.PrimaryAxis>
+                            <chart:SfChart.Behaviors>
+
+                                <chart:ChartCrossHairBehavior VerticalAxisLabelAlignment="Far " HorizontalAxisLabelAlignment="Center ">
+
+                                    <chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="10,5"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Red"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".2"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.VerticalLineStyle>
+
+                                    <chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="5,10"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Blue"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".4"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                </chart:ChartCrossHairBehavior>
+
+
+                            </chart:SfChart.Behaviors>
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis  ShowTrackBallInfo="True" Header="Germs(trill)" FontSize="14"/>
+                                </chart:SfChart.SecondaryAxis>
+                                <chart:ColumnSeries  x:Name="avgChart3" Label="g = f(l)" ItemsSource="{Binding}" YBindingPath="Value" XBindingPath="Key" >
+                                    <chart:ColumnSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo ShowMarker="True" SymbolStroke="red"  SymbolInterior="Blue" SymbolHeight="8" SymbolWidth="8" Symbol="Diamond"></chart:ChartAdornmentInfo>
+                                    </chart:ColumnSeries.AdornmentsInfo>
+                                </chart:ColumnSeries>
+                            </chart:SfChart>
+
+                        </Border>
+                    </ctl:TabItemExt>
+
+                <ctl:TabItemExt Header="Scatter">
+                        <Border  Margin="3"  BorderThickness="1">
+                            <chart:SfChart Height="auto" Width="auto" x:Name="zChart4" Header="Germs V Longivity">
+                                <chart:SfChart.PrimaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Age(years)" FontSize="14"/>
+                                </chart:SfChart.PrimaryAxis>
+                            <chart:SfChart.Behaviors>
+
+                                <chart:ChartCrossHairBehavior VerticalAxisLabelAlignment="Far " HorizontalAxisLabelAlignment="Center ">
+
+                                    <chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="10,5"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Red"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".2"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.VerticalLineStyle>
+
+                                    <chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="5,10"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Blue"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".4"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                </chart:ChartCrossHairBehavior>
+
+
+                            </chart:SfChart.Behaviors>
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Germs(trill)" FontSize="14"/>
+                                </chart:SfChart.SecondaryAxis>
+                                <chart:ScatterSeries  x:Name="avgChart4" Label="g = f(l)" ItemsSource="{Binding}" YBindingPath="Value" XBindingPath="Key" >
+
+                                </chart:ScatterSeries>
+                            </chart:SfChart>
+
+                        </Border>
+                    </ctl:TabItemExt>
+                   
+                <ctl:TabItemExt Header="Step Line">
+                        <Border  Margin="3"    BorderThickness="1">
+                            <chart:SfChart Height="auto" Width="auto" x:Name="zChart5" Header="Germs V Longivity">
+                                <chart:SfChart.PrimaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Age(years)" FontSize="14"/>
+                                </chart:SfChart.PrimaryAxis>
+                            <chart:SfChart.Behaviors>
+
+                                <chart:ChartCrossHairBehavior VerticalAxisLabelAlignment="Far " HorizontalAxisLabelAlignment="Center ">
+
+                                    <chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="10,5"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Red"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".2"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.VerticalLineStyle>
+
+                                    <chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="5,10"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Blue"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".4"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                </chart:ChartCrossHairBehavior>
+
+
+                            </chart:SfChart.Behaviors>
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Germs(trill)" FontSize="14"/>
+                                </chart:SfChart.SecondaryAxis>
+                                <chart:StepLineSeries x:Name="avgChart5" Label="g = f(l)" ItemsSource="{Binding}" YBindingPath="Value" XBindingPath="Key" >
+                                <chart:StepLineSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo ShowMarker="True"  SymbolHeight="8" SymbolWidth="8" Symbol="Diamond"></chart:ChartAdornmentInfo>
+                                    </chart:StepLineSeries.AdornmentsInfo>
+                                </chart:StepLineSeries>
+                            </chart:SfChart>
+
+                        </Border>
+                    </ctl:TabItemExt>
+
+                <ctl:TabItemExt Header="Spline" >
+                    <Border  Margin="3"    BorderThickness="1">
+                        <chart:SfChart Height="auto" Width="auto" x:Name="zChart6" Header="Germs V Longivity">
+                            <chart:SfChart.Behaviors>
+
+                                <chart:ChartCrossHairBehavior VerticalAxisLabelAlignment="Far " HorizontalAxisLabelAlignment="Center ">
+
+                                    <chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="10,5"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Red"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".2"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.VerticalLineStyle>
+
+                                    <chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                        <Style TargetType="Line">
+                                            <Setter Property="StrokeDashArray" Value="5,10"></Setter>
+                                            <!--<Setter Property="Stroke" Value="Blue"></Setter>-->
+                                            <Setter Property="StrokeThickness" Value=".4"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                </chart:ChartCrossHairBehavior>
+
+
+                            </chart:SfChart.Behaviors>
+                            <chart:SfChart.PrimaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Age(years)" FontSize="14"/>
+                            </chart:SfChart.PrimaryAxis>
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Germs(trill)" FontSize="14"/>
+                            </chart:SfChart.SecondaryAxis>
+                            <chart:SplineSeries x:Name="avgChart6" Label="g = f(l)" ItemsSource="{Binding}" YBindingPath="Value" XBindingPath="Key"  >
+                                <chart:SplineSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo ShowMarker="True"  SymbolHeight="8" SymbolWidth="8" Symbol="Hexagon"></chart:ChartAdornmentInfo>
+                                </chart:SplineSeries.AdornmentsInfo>
+                            </chart:SplineSeries>
+                        </chart:SfChart>
+
+                    </Border>
+                </ctl:TabItemExt>
+                <ctl:TabItemExt Header="Bar" >
+                    <Border  Margin="3"    BorderThickness="1">
+                        <chart:SfChart Height="auto" Width="auto" x:Name="zChart7" Header="Germs V Longivity">
+                            <chart:SfChart.Behaviors>
+
+                                <chart:ChartCrossHairBehavior VerticalAxisLabelAlignment="Far " HorizontalAxisLabelAlignment="Center ">
+
+                                    <chart:ChartCrossHairBehavior.VerticalLineStyle>
+                                        <Style TargetType="Line">
+                                            <!--<Setter Property="StrokeDashArray" Value="10,5"></Setter>-->
+                                            <Setter Property="Stroke" Value="Red"></Setter>
+                                            <Setter Property="StrokeThickness" Value=".2"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.VerticalLineStyle>
+
+                                    <chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                        <Style TargetType="Line">
+                                            <!--<Setter Property="StrokeDashArray" Value="5,10"></Setter>-->
+                                            <Setter Property="Stroke" Value="Blue"></Setter>
+                                            <Setter Property="StrokeThickness" Value=".4"></Setter>
+                                        </Style>
+                                    </chart:ChartCrossHairBehavior.HorizontalLineStyle>
+                                </chart:ChartCrossHairBehavior>
+
+
+                            </chart:SfChart.Behaviors>
+                            <chart:SfChart.PrimaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Age(years)" FontSize="14"/>
+                            </chart:SfChart.PrimaryAxis>
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis ShowTrackBallInfo="True" Header="Germs(trill)" FontSize="14"/>
+                            </chart:SfChart.SecondaryAxis>
+                            <chart:BarSeries x:Name="avgChart7" Label="g = f(l)" ItemsSource="{Binding}" YBindingPath="Value" XBindingPath="Key"  >
+                                <chart:BarSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo ShowMarker="True" SymbolStroke="red"  SymbolInterior="Blue" SymbolHeight="8" SymbolWidth="8" Symbol="Hexagon"></chart:ChartAdornmentInfo>
+                                </chart:BarSeries.AdornmentsInfo>
+                            </chart:BarSeries>
+                        </chart:SfChart>
+
+                    </Border>
+                </ctl:TabItemExt>
+            </ctl:TabControlExt>
+        </Grid>
+    </Grid>
+</Window>

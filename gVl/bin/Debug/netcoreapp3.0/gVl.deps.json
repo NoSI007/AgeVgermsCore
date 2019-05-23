@@ -1,0 +1,242 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "gVl/1.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.0.0-preview5.19224.8",
+          "Syncfusion.Data.WPF": "17.1.0.48",
+          "Syncfusion.SfChart.WPF": "17.1.0.48",
+          "Syncfusion.SfGrid.WPF": "17.1.0.48",
+          "Syncfusion.Shared.WPF": "17.1.0.48",
+          "Syncfusion.Themes.Blend.WPF": "17.1.0.48",
+          "Syncfusion.Themes.Lime.WPF": "17.1.0.48",
+          "Syncfusion.Themes.Office365.WPF": "17.1.0.48",
+          "Syncfusion.Themes.Saffron.WPF": "17.1.0.48",
+          "Syncfusion.Tools.WPF": "17.1.0.48"
+        },
+        "runtime": {
+          "gVl.dll": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/3.0.0-preview5.19224.8": {},
+      "Syncfusion.Data.WPF/17.1.0.48": {
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.Data.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.Licensing/17.1.0.48": {
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "17.1.0.48",
+            "fileVersion": "17.1.0.48"
+          }
+        }
+      },
+      "Syncfusion.SfChart.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.SfChart.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.SfGrid.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Data.WPF": "17.1.0.48",
+          "Syncfusion.Licensing": "17.1.0.48",
+          "Syncfusion.Shared.WPF": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.SfGrid.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.SfSkinManager.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.SfSkinManager.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.Shared.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.Shared.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.Themes.Blend.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "17.1.0.48",
+          "Syncfusion.SfSkinManager.WPF": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.Themes.Blend.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.Themes.Lime.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "17.1.0.48",
+          "Syncfusion.SfSkinManager.WPF": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.Themes.Lime.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.Themes.Office365.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "17.1.0.48",
+          "Syncfusion.SfSkinManager.WPF": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.Themes.Office365.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.Themes.Saffron.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "17.1.0.48",
+          "Syncfusion.SfSkinManager.WPF": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.Themes.Saffron.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      },
+      "Syncfusion.Tools.WPF/17.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "17.1.0.48",
+          "Syncfusion.Shared.WPF": "17.1.0.48"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Syncfusion.Tools.WPF.dll": {
+            "assemblyVersion": "17.1300.0.48",
+            "fileVersion": "17.1300.0.48"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "gVl/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Platforms/3.0.0-preview5.19224.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zhgy08eNf89IrzGZXbHbzEcxLk7zfbB5H9rIV9q7/QlA+iBZrKP4VuC7Hq2O1Oh+qD0pLA+LQIQ5YpqTomhW/w==",
+      "path": "microsoft.netcore.platforms/3.0.0-preview5.19224.8",
+      "hashPath": "microsoft.netcore.platforms.3.0.0-preview5.19224.8.nupkg.sha512"
+    },
+    "Syncfusion.Data.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W33GzHElMcWPEEcqt5D3X9FmDfcs2w1fT+EOgqw6as6M5INgCH+C9ImymcAGm3+SXxgmO9a03d74MVD3wf2Kxg==",
+      "path": "syncfusion.data.wpf/17.1.0.48",
+      "hashPath": "syncfusion.data.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Licensing/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xIlyScb+t+9D7hmf9G+83HFVCrhwFFCZBpLj3OD377TEuBUKRVQFK88vlGG2KRtVB4oBiMCjKC4yZutLNmsvig==",
+      "path": "syncfusion.licensing/17.1.0.48",
+      "hashPath": "syncfusion.licensing.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.SfChart.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-blfEeLPrYo5TmN6Hr/akfLdvbSwvlKKs6G3elrQD2wlzMAc2FtqqUGppfM1DIHvYl94b6/QMKZ8xkKiPPP8LvQ==",
+      "path": "syncfusion.sfchart.wpf/17.1.0.48",
+      "hashPath": "syncfusion.sfchart.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.SfGrid.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Hg9kfQBjSZdk2tG/NM8mt8WSsmQ+05sPsnO6EPQS27QtozBGNjZ/bbMW+v13XkooPS+vdC2CuJAKLbTO9T8QTg==",
+      "path": "syncfusion.sfgrid.wpf/17.1.0.48",
+      "hashPath": "syncfusion.sfgrid.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.SfSkinManager.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KxvQmGWYplFX5tfeA589yPihlAbtTYu11cOwTdZaCxNk3uGjKdk5Wy2i4GiobOSjzPpXgStnAw8CENewcVBJdg==",
+      "path": "syncfusion.sfskinmanager.wpf/17.1.0.48",
+      "hashPath": "syncfusion.sfskinmanager.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Shared.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-s4kyWse6Su4SUZk3Ea9LSLtNQUHjSLA455x4BT8OubYmxybDYBBdB+UCayglN5Niyj1f0hip/yJy1bzSgQEbOA==",
+      "path": "syncfusion.shared.wpf/17.1.0.48",
+      "hashPath": "syncfusion.shared.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Themes.Blend.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CKGbhKeMkeYos8Kftlzh9LgloG4PyKCHSN3YhMSIl1tvwDobjWhdJeqB8h2S6dwk9xuw5nea7KMKbcE/Ohnk1Q==",
+      "path": "syncfusion.themes.blend.wpf/17.1.0.48",
+      "hashPath": "syncfusion.themes.blend.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Themes.Lime.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9OAnAkDlSxBHVTWCbLaZhWQxaZHa2Tag8GHewgVXOWT5Ic7TzKtW1QNMtNSfo0aamrebA0VmGaaQ2u0ipa8nZg==",
+      "path": "syncfusion.themes.lime.wpf/17.1.0.48",
+      "hashPath": "syncfusion.themes.lime.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Themes.Office365.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Mbl73gEB6ZBUIn+LaZ59F3F/eB1BEi4brhSazkncP4ffWxTUQpqgb6DtWeG9TyvSKYbdsh2rhFACF1rZrPoPUQ==",
+      "path": "syncfusion.themes.office365.wpf/17.1.0.48",
+      "hashPath": "syncfusion.themes.office365.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Themes.Saffron.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JtH1zMsLG3ys65h/+5zzS/75a5fX7QXXRSbVs8tTQCJhKTZUt0fPxZfTmMBosrIcSAYzi2nwulOw8o+CbgiWHg==",
+      "path": "syncfusion.themes.saffron.wpf/17.1.0.48",
+      "hashPath": "syncfusion.themes.saffron.wpf.17.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Tools.WPF/17.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uFinRpnYwi4Y/2CHTONMiwCDfRpiUXUJSxvDfEikba8YKc6aA+6VPaKGnMZJPBWaZxtmsyi5HnQOgW58yL7QuA==",
+      "path": "syncfusion.tools.wpf/17.1.0.48",
+      "hashPath": "syncfusion.tools.wpf.17.1.0.48.nupkg.sha512"
+    }
+  }
+}

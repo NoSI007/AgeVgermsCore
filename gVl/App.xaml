@@ -1,0 +1,321 @@
+﻿<Application x:Class="gVl.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:gVl"
+             xmlns:chart="http://schemas.syncfusion.com/wpf"
+             StartupUri="Home.xaml">
+    <Application.Resources>
+        <Style x:Key="gBg" TargetType="{x:Type Grid}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <VisualBrush TileMode="Tile" Viewport="0,0,12,12" ViewportUnits="Absolute"  Viewbox="0,0,12,12" ViewboxUnits="Absolute">
+                        <VisualBrush.Visual>
+                            <Canvas >
+                                <Rectangle Stroke="Magenta" Fill="White" StrokeThickness=".1"  Height="12" SnapsToDevicePixels="True"  Width="12"/>
+                                <!--<Line Stroke="LightBlue" X1="0" X2="25" Y1="13" Y2="13"  StrokeThickness=".5" />-->
+                                <!--<Path Stroke="Fuchsia" StrokeThickness=".5"   Data="M 0,25 5,13 10,13 15,13 20,13 25,25" />-->
+                            </Canvas>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="2,0"/>
+        </Style>
+        <SolidColorBrush x:Key="{x:Static DataGrid.FocusBorderBrushKey}" Color="#FF000000"/>
+        <Style x:Key="DataGridCellStyle1" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}" >
+                        <Border BorderBrush="Gray" BorderThickness="1" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" VerticalAlignment="Center" CornerRadius="5,5,2,2" Margin="1,2,5,1" Padding="2,2,5,2">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="LightCyan"/>
+                    <Setter Property="Foreground" Value="Blue"/>
+                    <Setter Property="BorderBrush" Value="Violet"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="FontWeight" Value="DemiBold"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static DataGrid.FocusBorderBrushKey}}"/>
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsSelected" Value="true"/>
+                        <Condition Property="Selector.IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <!--<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}}"/>-->
+                </MultiTrigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type chart:ButtonAdv}">
+            <Setter Property="Foreground" Value="#FF286CD1"/>
+            <Setter Property="SmallIcon">
+                <Setter.Value>
+                    <BitmapImage UriSource="pack://application:,,,/Syncfusion.Shared.WPF;component//Controls/ButtonControls/Images/WordArt16.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="LargeIcon">
+                <Setter.Value>
+                    <BitmapImage UriSource="pack://application:,,,/Syncfusion.Shared.WPF;component//Controls/ButtonControls/Images/WordArt32.png"/>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FFECECEC" Offset="0.05"/>
+                        <GradientStop Color="#FFDBDBDB" Offset="0.757"/>
+                        <GradientStop Color="#FF84B94F" Offset="0.937"/>
+                    </RadialGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="#FFE6185A"/>
+            <Setter Property="Padding" Value="2,0,4,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type chart:ButtonAdv}">
+                        <Grid>
+                            <Grid.Resources>
+                                <chart:MultiLineConverter x:Key="TextConverter"/>
+                            </Grid.Resources>
+                            <Border x:Name="ItemCheckedBorder" BorderBrush="#FF2C628B" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="7" Opacity="0">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF8CA1AC" Offset="0.036"/>
+                                        <GradientStop Color="#FFB0CDDD" Offset="0.048"/>
+                                        <GradientStop Color="#FFB0CDDD" Offset="0.084"/>
+                                        <GradientStop Color="#FFC2E4F6" Offset="0.096"/>
+                                        <GradientStop Color="#FFC2E4F6" Offset="0.468"/>
+                                        <GradientStop Color="#FFA8D9F2" Offset="0.532"/>
+                                        <GradientStop Color="#FF91CCEB" Offset="0.964"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <Border x:Name="ItemBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="5" MinHeight="22" SnapsToDevicePixels="True">
+                                <Border x:Name="InnerBorder" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" CornerRadius="3">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White" Offset="0"/>
+                                            <GradientStop Color="#FFE8E8E8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Grid Margin="{TemplateBinding Padding}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border x:Name="PART_ImageBorder" Grid.Column="0">
+                                            <Image x:Name="smallimage" Height="{Binding IconHeight, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type chart:ButtonAdv}}}" Margin="2" Source="{Binding SmallIcon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" Width="{Binding IconWidth, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type chart:ButtonAdv}}}"/>
+                                        </Border>
+                                        <AccessText x:Name="PART_Text" Grid.Column="1" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2,0,0,0" Text="{TemplateBinding Label}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Grid>
+                                </Border>
+                            </Border>
+                            <Border x:Name="ItemBorder1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3" MinHeight="22" SnapsToDevicePixels="True" Visibility="Collapsed">
+                                <Border x:Name="InnerBorder1" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" CornerRadius="3">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White" Offset="0"/>
+                                            <GradientStop Color="#FFE8E8E8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <StackPanel Margin="{TemplateBinding Padding}">
+                                        <Border x:Name="PART_ImageBorderLarge">
+                                            <Image x:Name="LargeImage" Height="{Binding IconWidth, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type chart:ButtonAdv}}}" Margin="2" Source="{Binding LargeIcon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" Width="{Binding IconWidth, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type chart:ButtonAdv}}}"/>
+                                        </Border>
+                                        <ItemsControl x:Name="PART_TextAreaLarge" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" IsTabStop="False" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                                    </StackPanel>
+                                </Border>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="chart:SkinStorage.EnableTouch" Value="True">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="Padding" Value="11,8"/>
+                                <Setter Property="IconHeight" Value="20"/>
+                                <Setter Property="IconWidth" Value="20"/>
+                                <Setter Property="CornerRadius" TargetName="ItemBorder" Value="6"/>
+                                <Setter Property="CornerRadius" TargetName="ItemBorder1" Value="6"/>
+                                <Setter Property="CornerRadius" TargetName="ItemBorder" Value="6"/>
+                                <Setter Property="CornerRadius" TargetName="ItemBorder1" Value="6"/>
+                                <Setter Property="CornerRadius" TargetName="InnerBorder" Value="6"/>
+                                <Setter Property="CornerRadius" TargetName="InnerBorder1" Value="6"/>
+                                <Setter Property="Height" TargetName="LargeImage" Value="30"/>
+                                <Setter Property="Width" TargetName="LargeImage" Value="30"/>
+                                <Setter Property="Margin" TargetName="smallimage" Value="0,2,2,2"/>
+                                <Setter Property="Effect" TargetName="ItemBorder">
+                                    <Setter.Value>
+                                        <DropShadowEffect Direction="315" Opacity="0.3" ShadowDepth="2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Effect" TargetName="ItemBorder1">
+                                    <Setter.Value>
+                                        <DropShadowEffect Direction="315" Opacity="0.3" ShadowDepth="2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Margin" TargetName="PART_Text" Value="5,0,1,0"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="chart:SkinStorage.EnableTouch" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="ItemBorder">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFDBF1FC" Offset="0.465"/>
+                                            <GradientStop Color="#FFBCE5FC" Offset="0.526"/>
+                                            <GradientStop Color="#FFAADBF6" Offset="0.991"/>
+                                            <GradientStop Color="#FFD6EDFA" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" TargetName="ItemBorder1">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFDBF1FC" Offset="0.465"/>
+                                            <GradientStop Color="#FFBCE5FC" Offset="0.526"/>
+                                            <GradientStop Color="#FFAADBF6" Offset="0.991"/>
+                                            <GradientStop Color="#FFD6EDFA" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="ItemBorder" Value="#FF3C7FB1"/>
+                                <Setter Property="BorderBrush" TargetName="ItemBorder1" Value="#FF3C7FB1"/>
+                                <Setter Property="Foreground" TargetName="PART_Text" Value="Black"/>
+                                <Setter Property="BorderBrush" TargetName="InnerBorder">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFFEFFFF" Offset="0"/>
+                                            <GradientStop Color="#FFD6EDFA" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="InnerBorder1">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFFEFFFF" Offset="0"/>
+                                            <GradientStop Color="#FFD6EDFA" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="chart:SkinStorage.EnableTouch" Value="False"/>
+                                </MultiTrigger.Conditions>
+                            </MultiTrigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="ItemBorder">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF8CA1AC" Offset="0.036"/>
+                                            <GradientStop Color="#FFB0CDDD" Offset="0.048"/>
+                                            <GradientStop Color="#FFB0CDDD" Offset="0.084"/>
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.096"/>
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.468"/>
+                                            <GradientStop Color="#FFA8D9F2" Offset="0.532"/>
+                                            <GradientStop Color="#FF91CCEB" Offset="0.964"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" TargetName="ItemBorder1">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF8CA1AC" Offset="0.036"/>
+                                            <GradientStop Color="#FFB0CDDD" Offset="0.048"/>
+                                            <GradientStop Color="#FFB0CDDD" Offset="0.084"/>
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.096"/>
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.468"/>
+                                            <GradientStop Color="#FFA8D9F2" Offset="0.532"/>
+                                            <GradientStop Color="#FF91CCEB" Offset="0.964"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="ItemBorder" Value="#FF2C628B"/>
+                                <Setter Property="BorderBrush" TargetName="ItemBorder1" Value="#FF2C628B"/>
+                                <Setter Property="Foreground" TargetName="PART_Text" Value="Black"/>
+                                <Setter Property="BorderBrush" TargetName="InnerBorder">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF8CA1AC" Offset="0.036"/>
+                                            <GradientStop Color="#FFB0CDDD" Offset="0.048"/>
+                                            <GradientStop Color="#FFB0CDDD" Offset="0.084"/>
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.096"/>
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.468"/>
+                                            <GradientStop Color="#FFA8D9F2" Offset="0.532"/>
+                                            <GradientStop Color="#FF91CCEB" Offset="0.964"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="InnerBorder1">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF8CA1AC" Offset="0.036"/>
+                                            <GradientStop Color="#FFB0CDDD" Offset="0.048"/>
+                                            <GradientStop Color="#FFB0CDDD" Offset="0.084"/>
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.096"/>
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.468"/>
+                                            <GradientStop Color="#FFA8D9F2" Offset="0.532"/>
+                                            <GradientStop Color="#FF91CCEB" Offset="0.964"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsCheckable" Value="True"/>
+                                    <Condition Property="IsChecked" Value="True"/>
+                                    <Condition Property="IsEnabled" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="BorderBrush" TargetName="ItemBorder" Value="#FF2C628B"/>
+                                <Setter Property="Background" TargetName="InnerBorder">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFC2E4F6" Offset="0.453"/>
+                                            <GradientStop Color="#FFA9DAF3" Offset="0.462"/>
+                                            <GradientStop Color="#FF96CFED" Offset="0.864"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderThickness" TargetName="InnerBorder" Value="1,1,0,0"/>
+                                <Setter Property="CornerRadius" TargetName="InnerBorder" Value="2,2,0,0"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="ItemBorder" Value="0.5"/>
+                                <Setter Property="Opacity" TargetName="ItemBorder1" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#FFE6E64F"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>
